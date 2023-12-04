@@ -25,11 +25,36 @@ function Signup(){
                     width: 400,
                     padding: 20,
                 }}>
-                    <TextField fullWidth={true} id="outlined-basic" label="Email" variant="outlined" />
+                    <TextField fullWidth={true} id="email" label="Email" variant="outlined" />
                     <br/><br/>
-                    <TextField fullWidth={true} id="outlined-basic" label="Password" variant="outlined" type="password" />
+                    <TextField fullWidth={true} id="password" label="Password" variant="outlined" type="password" />
                     <br/><br/>
-                    <Button size="large" variant="contained">Sign Up</Button>
+
+
+                    <Button 
+                    size="large" 
+                    variant="contained"
+                    
+                    onClick={() => {
+                        let emailID = document.getElementById("email").value;
+                        let pass = document.getElementById("password").value;
+
+                        fetch("http://localhost:3000/admin/signup", {
+                            method: POST,
+                            
+                            body: JSON.stringify({
+                                emailID,
+                                pass
+                            }),
+
+                            headers: {
+                                "Content-type": "application/json"
+                            }
+                        })
+                    }}
+                    
+                    >Sign Up</Button>
+                
                 </Card>
 
             </div>
