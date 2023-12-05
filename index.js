@@ -69,7 +69,7 @@ app.post('/admin/signup', (req, res) => {
             const newAdmin = new Admin(obj);
             newAdmin.save();
             const token = sign({username, role: 'admin'}, secret, {expiresIn: '1h'});
-            res.json({message: 'Admin created successfully'});
+            res.json({message: 'Admin created successfully', token});
         }
     }
 

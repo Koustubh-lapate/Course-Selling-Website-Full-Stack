@@ -4,9 +4,9 @@ import TextField from "@mui/material/TextField";
 import { Typography } from "@mui/material";
 import { useState } from "react";
 
-function Signin(){
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+function AddCourse(){
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
 
     return(
         <div>
@@ -18,7 +18,7 @@ function Signin(){
             }}>
 
                 <Typography variant="h6">
-                <b>Welcome Back! Sign In below</b>
+                <b>Add Course below!</b>
                 </Typography>
 
             </div>
@@ -33,10 +33,10 @@ function Signin(){
                     fullWidth={true} 
                     id="outlined-basic" 
                     onChange={(e) => {
-                        setEmail(e.target.value);
+                        setTitle(e.target.value);
                     }}
 
-                    label="Email" 
+                    label="Title" 
                     variant="outlined" />
                     <br/><br/>
                     
@@ -44,13 +44,12 @@ function Signin(){
                     fullWidth={true} 
                     id="outlined-basic"
                     onChange={(e) => {
-                        setPassword(e.target.value);
+                        setDescription(e.target.value);
                     }}
                     
                     
-                    label="Password" 
-                    variant="outlined" 
-                    type="password" />
+                    label="Description" 
+                    variant="outlined" />
                     <br/><br/>
 
                     <Button 
@@ -58,23 +57,24 @@ function Signin(){
                     variant="contained"
                     
                     onClick={() => {
-                        fetch("http://localhost:3000/admin/login", {
+                        fetch("http://localhost:3000/admin/courses", {
                             method: "POST",
+
+                            body: {
+                                title: title,
+                                description: description,
+                                imageLink: "",
+                                published: "YES"
+                            },
 
                             headers: {
                                 "Content-type": "application/json",
-                                "username": email,
-                                "password": password,
+                                "Authorization": "Bearer " + localStorage.getItem(token)
                             }
-                        }).then((resp) => {
-                            return resp.json().then((data) => {
-                                localStorage.setItem("token", data.token);
-                                //console.log(data);
-                            })
                         })
                     }}
 
-                    >Sign In</Button>
+                    >Submit</Button>
                 
                 </Card>
 
@@ -84,4 +84,4 @@ function Signin(){
     )
 }
 
-export default Signin;
+export default AddCourse;

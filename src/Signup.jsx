@@ -5,8 +5,8 @@ import { Typography } from "@mui/material";
 import { useState } from "react";
 
 function Signup(){
-    const[email, setEmail] = useState("");
-    const[password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     return(
         <div>
@@ -60,7 +60,7 @@ function Signup(){
                     
                     onClick={() => {
                         fetch("http://localhost:3000/admin/signup", {
-                            method: POST,
+                            method: "POST",
                             
                             body: JSON.stringify({
                                 username: email,
@@ -71,6 +71,11 @@ function Signup(){
                                 "Content-type": "application/json"
                             }
 
+                        }).then((resp) => {
+                            return resp.json().then((data) => {
+                                localStorage.setItem("token", data.token);
+                                //console.log(data);
+                            })
                         })
                     }}
                     

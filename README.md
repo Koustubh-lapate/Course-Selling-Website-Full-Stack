@@ -1,8 +1,7 @@
-# React + Vite
+# Admin side Course Selling Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Led the development of an Admin Side for a Course Selling Website using HTML, CSS, and React.js for an intuitive and responsive user interface.
 
-Currently, two official plugins are available:
+Implemented server-side functionalities with Node.js, Express.js, and MongoDB, enabling seamless course data management and real-time updates.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Designed and implemented MongoDB database schemas for efficient storage and retrieval of course-related data.
