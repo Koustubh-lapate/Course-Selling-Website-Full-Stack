@@ -2,8 +2,12 @@ import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { Typography } from "@mui/material";
+import { useState } from "react";
 
 function Signup(){
+    const[email, setEmail] = useState("");
+    const[password, setPassword] = useState("");
+
     return(
         <div>
             <div style={{
@@ -25,31 +29,48 @@ function Signup(){
                     width: 400,
                     padding: 20,
                 }}>
-                    <TextField fullWidth={true} id="email" label="Email" variant="outlined" />
-                    <br/><br/>
-                    <TextField fullWidth={true} id="password" label="Password" variant="outlined" type="password" />
-                    <br/><br/>
+                    <TextField 
+                    fullWidth={true} 
+                    label="Email" 
 
+                    onChange={(e) => {
+                        setEmail(e.target.value)
+                    }}
+
+                    variant="outlined" />
+                    
+                    <br/><br/>
+                    
+                    <TextField 
+                    fullWidth={true} 
+                    label="Password" 
+                    
+                    onChange={(e) => {
+                        setPassword(e.target.value)
+                    }}
+
+                    variant="outlined" 
+                    type="password" />
+                    
+                    <br/><br/>
 
                     <Button 
                     size="large" 
                     variant="contained"
                     
                     onClick={() => {
-                        let emailID = document.getElementById("email").value;
-                        let pass = document.getElementById("password").value;
-
                         fetch("http://localhost:3000/admin/signup", {
                             method: POST,
                             
                             body: JSON.stringify({
-                                emailID,
-                                pass
+                                username: email,
+                                password: password
                             }),
 
                             headers: {
                                 "Content-type": "application/json"
                             }
+
                         })
                     }}
                     
