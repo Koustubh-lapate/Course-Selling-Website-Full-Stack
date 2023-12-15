@@ -26,7 +26,7 @@ const courseSchema = new Schema({
     description: String, 
     price: Number,
     imageLink: String,
-    published: Boolean
+    published: String
 });
 
 //define mongoose models

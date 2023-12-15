@@ -60,16 +60,17 @@ function AddCourse(){
                         fetch("http://localhost:3000/admin/courses", {
                             method: "POST",
 
-                            body: {
+                            body: JSON.stringify({
                                 title: title,
                                 description: description,
+                                price: 3000,
                                 imageLink: "",
                                 published: "YES"
-                            },
+                            }),
 
                             headers: {
                                 "Content-type": "application/json",
-                                "Authorization": "Bearer " + localStorage.getItem(token)
+                                "Authorization": "Bearer " + localStorage.getItem("token")
                             }
                         })
                     }}
