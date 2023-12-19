@@ -43,7 +43,7 @@ const authenticateJwt = (req, res, next) => {
                 return res.status(403);
             }
 
-            res.user = user;
+            req.user = user;
             next();
         });
     }
@@ -55,6 +55,15 @@ const authenticateJwt = (req, res, next) => {
 
 //connect to MongoDB
 connect('mongodb+srv://koustubhlap:kond018@koustubh18.qmw1c9a.mongodb.net/', {dbName: "coursesdata"});
+
+app.get('/admin/me', authenticateJwt, (req, res) => {
+  const username = req.user.username;
+
+  res.json({
+    username: username
+  });
+
+});
 
 app.post('/admin/signup', (req, res) => {
     const {username, password} = req.body;
@@ -77,7 +86,7 @@ app.post('/admin/signup', (req, res) => {
 });
 
 app.post('/admin/login', async (req, res) => {
-  const {username, password} = req.headers;
+  const {username, password} = req.body;
   const admin = await Admin.findOne({username, password});
 
   if(admin){

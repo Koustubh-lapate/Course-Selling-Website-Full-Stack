@@ -60,11 +60,14 @@ function Signin(){
                     onClick={() => {
                         fetch("http://localhost:3000/admin/login", {
                             method: "POST",
-
-                            headers: {
-                                "Content-type": "application/json",
+                            
+                            body: JSON.stringify({
                                 "username": email,
                                 "password": password,
+                            }),
+                            
+                            headers: {
+                                "Content-type": "application/json"
                             }
                         }).then((resp) => {
                             return resp.json().then((data) => {

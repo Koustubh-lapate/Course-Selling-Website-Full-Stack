@@ -3,6 +3,7 @@ import Signup from "./Signup";
 import Appbar from "./Appbar";
 import Signin from "./Signin";
 import AddCourse from "./AddCourse";
+import Courses from "./Courses";
 
 function App(){
     return(
@@ -18,6 +19,7 @@ function App(){
                     <Route path="/login" element={<Signin />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/addcourse" element={<AddCourse />} />
+                    <Route path="/courses" element={<Courses />} />
                 </Routes>
             
             </Router>
