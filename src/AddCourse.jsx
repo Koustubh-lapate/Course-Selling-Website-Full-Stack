@@ -8,6 +8,7 @@ function AddCourse(){
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [image, setImage] = useState(""); 
+    const [price, setPrice] = useState(0);
 
     return(
         <div>
@@ -65,6 +66,18 @@ function AddCourse(){
                     variant="outlined" />
                     <br/><br/>
 
+                    <TextField 
+                    fullWidth={true} 
+                    id="outlined-basic"
+                    onChange={(e) => {
+                        setPrice(e.target.value);
+                    }}
+                    
+                    
+                    label="Price" 
+                    variant="outlined" />
+                    <br/><br/>
+
                     <Button 
                     size="large" 
                     variant="contained"
@@ -76,7 +89,7 @@ function AddCourse(){
                             body: JSON.stringify({
                                 title: title,
                                 description: description,
-                                price: 3000,
+                                price: price,
                                 imageLink: image,
                                 published: true
                             }),
