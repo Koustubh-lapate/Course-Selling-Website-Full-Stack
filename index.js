@@ -122,6 +122,12 @@ app.get('/admin/courses', authenticateJwt, async (req, res) => {
   res.json({courses});
 });
 
+app.get('/admin/courses/:courseId', authenticateJwt, async (req, res) => {
+  const courseId = req.params.courseId;
+  const course = await Course.findById(courseId);
+  res.json({ course });
+});
+
 app.listen(port, () => {
     console.log('Course selling admin side backend server listening on port 3000');
 });

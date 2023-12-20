@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Typography, Card, TextField, Button } from "@mui/material";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -21,24 +21,19 @@ function Course(){
         })
     }, [])
 
-    let course;
-
-    for(let i=0;i<courses.length;i++){
-        if(courses[i].id === courseId){
-            course = courses[i];
-            break;
-        }
-    }
+    const course = courses.find((c) => c.id === courseId);
 
     return (
-        <div style={{display: "flex", justifyContent: "center"}}> 
-            <CourseCard course = {course} />
-            <UpdateCard course = {course} />
+        <div style={{ display: "flex", justifyContent: "center" }}>
+            {course ? <CourseCard course={course} /> : null}
+            <UpdateCard course={course} />
         </div>
     )
 }
 
 function CourseCard(props){
+    const course = props.course; 
+
     return (
         <Card style={{
             margin: 10,
@@ -46,9 +41,9 @@ function CourseCard(props){
             minHeight: 200
         }}>
 
-            <Typography textAlign={"center"} variant="h5">{props.course.title}</Typography>
-            <Typography textAlign={"center"} variant="subtitle1">{props.course.description}</Typography>
-            <img src={props.course.imageLink} style={{width: 300}}></img>
+            <Typography textAlign={"center"} variant="h5">{course.title}</Typography>
+            <Typography textAlign={"center"} variant="subtitle1">{course.description}</Typography>
+            <img src={course.imageLink} style={{width: 300}}></img>
         </Card>
     )
 }
