@@ -45,7 +45,7 @@ function Appbar(){
                     <Button 
                     variant="contained"
                     onClick={() => {
-                        navigate("/signup");
+                        window.location = "/signup";
                         localStorage.setItem("token", null);
                     }}
     

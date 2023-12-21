@@ -5,6 +5,7 @@ import Signin from "./Signin";
 import AddCourse from "./AddCourse";
 import Courses from "./Courses";
 import Course from "./Course";
+import Menu from "./Menu";
 
 function App(){
     return(
@@ -22,6 +23,7 @@ function App(){
                     <Route path="/addcourse" element={<AddCourse />} />
                     <Route path="/courses" element={<Courses />} />
                     <Route path='/courses/:courseId' element={<Course />} />
+                    <Route path='/menu' element={<Menu />} />
                 </Routes>
             
             </Router>

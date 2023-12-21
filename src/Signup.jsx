@@ -74,7 +74,7 @@ function Signup(){
                         }).then((resp) => {
                             return resp.json().then((data) => {
                                 localStorage.setItem("token", data.token);
-                                //console.log(data);
+                                window.location = "/menu";
                             })
                         })
                     }}
